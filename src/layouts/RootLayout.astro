@@ -1,0 +1,27 @@
+---
+interface Props {
+  lang: string;
+}
+import BaseHead from "@components/BaseHead.astro";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+import { TITLE, DESCRIPTION } from "../site-config";
+const { lang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <BaseHead title={TITLE} description={DESCRIPTION} />
+  </head>
+  <body>
+    <Navbar lang={lang} />
+    <div
+      class="min-h-screen max-w-3xl mx-auto px-4 sm:px-8 xl:px-0 mt-8 sm:mt-12"
+    >
+      <slot />
+    </div>
+    <Footer />
+    <script src="/src/lib/bootstrap.js"></script>
+  </body>
+</html>

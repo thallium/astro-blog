@@ -1,0 +1,16 @@
+---
+import { LANGS } from "src/site-config";
+import { asyncFlatMap } from "src/lib/util";
+import { getTags } from "src/lib/posts";
+
+const { lang, tag } = Astro.params;
+export async function getStaticPaths() {
+  return await asyncFlatMap(LANGS, async (lang) => {
+    const tags = await getTags(lang);
+    console.log(tags);
+    const paths = tags.map((tag) => ({ params: { lang, tag: tag[0] } }));
+    return paths;
+  });
+}
+return Astro.redirect(`/${lang}/tags/${tag}/page/1`);
+---

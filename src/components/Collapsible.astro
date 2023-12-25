@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  isCollapsed: boolean;
+}
+const { title, isCollapsed = true } = Astro.props;
+import { randomBytes } from "crypto";
+import { ChevronUp } from "lucide-astro";
+const id = "c" + randomBytes(6).toString("hex");
+---
+
+<button
+  type="button"
+  aria-controls={id}
+  class="group collapsible flex items-center bg-accent rounded-lg justify-between w-full p-4"
+  data-bs-toggle="collapse"
+  data-bs-target={"#" + id}
+>
+  <h4 class="not-prose text-lg">
+    {title}
+  </h4>
+  <ChevronUp
+    class="group-[[aria-expanded='true']]:rotate-180 trnasition-transform"
+  />
+</button>
+<div
+  id={id}
+  aria-expanded="false"
+  class:list={["collapse", { show: !isCollapsed }]}
+>
+  <slot />
+</div>

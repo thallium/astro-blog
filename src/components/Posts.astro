@@ -1,0 +1,16 @@
+---
+interface Props {
+  lang: string;
+  posts: Post[];
+}
+import { Post } from "src/lib/util";
+import ListItem from "@components/ListItem.astro";
+
+const { lang, posts } = Astro.props;
+---
+
+<section class="mt-6 mx-auto">
+  <ul>
+    {posts.map((post) => <ListItem post={post} lang={lang} />)}
+  </ul>
+</section>

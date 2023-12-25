@@ -1,0 +1,61 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { getAllPosts } from "src/lib/posts";
+import RootLayout from "src/layouts/RootLayout.astro";
+import Collapsible from "@components/Collapsible.astro";
+import Figure from "@components/Figure.astro";
+import { Hash } from "lucide-astro";
+import { type Post } from "src/lib/util";
+
+export async function getStaticPaths() {
+  return (await getAllPosts()).map((post) => {
+    const slug = post.slug.split("/");
+    return {
+      params: {
+        lang: slug[0],
+        postId: slug[1],
+      },
+      props: post,
+    };
+  });
+}
+
+type Props = Post;
+const { lang } = Astro.params;
+const post = Astro.props;
+const { Content } = await post.render();
+const tags = post.tags;
+const { title, date } = post.data;
+---
+
+<RootLayout lang={lang}>
+  <main class="max-w-3xl py-3 xl:py-6">
+    <h1 class="text-4xl font-bold">{title}</h1>
+    <div class="flex flex-row flex-wrap gap-x-1 my-4 items-center">
+      {
+        date && (
+          <time class="whitespace-nowrap">
+            {date.toISOString().split("T")[0]}
+          </time>
+        )
+      }
+      {
+        tags &&
+          tags.length > 0 &&
+          tags.map((tag) => (
+            <a
+              href={`/${lang}/tags/${tag}`}
+              class="flex flex-row whitespace-nowrap items-center text-muted-foreground"
+            >
+              <Hash size={18} />
+              {tag}
+            </a>
+          ))
+      }
+    </div>
+
+    <article class="prose prose-code:font-normal max-w-full">
+      <Content class="" components={{ Collapsible, Figure }} />
+    </article>
+  </main>
+</RootLayout>

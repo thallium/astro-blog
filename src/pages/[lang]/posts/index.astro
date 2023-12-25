@@ -1,0 +1,13 @@
+---
+import { LANGS } from "src/site-config";
+export async function getStaticPaths() {
+  return LANGS.flatMap((lang) => ({
+    params: {
+      lang,
+    },
+  }));
+}
+
+const { lang } = Astro.params;
+return Astro.redirect(`/${lang}/posts/page/1`);
+---

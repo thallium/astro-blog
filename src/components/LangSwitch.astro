@@ -1,0 +1,19 @@
+---
+import { Menu } from "@headlessui/react";
+
+import { Languages } from "lucide-astro";
+---
+
+<Menu client:load>
+  <Menu.Button client:load>
+    <Languages />
+  </Menu.Button>
+  <Menu.Items client:load>
+    <Menu.Item client:load>
+      <a href="/en">English</a>
+    </Menu.Item>
+    <Menu.Item client:load>
+      <a href="/es">Español</a>
+    </Menu.Item>
+  </Menu.Items>
+</Menu>

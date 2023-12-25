@@ -1,0 +1,23 @@
+---
+import PostsLayout from "src/layouts/PostsLayout.astro";
+import { LANGS, POST_PER_PAGE } from "src/site-config";
+import { getSortedPostsData } from "src/lib/posts";
+export async function getStaticPaths({ paginate }) {
+  return (
+    await Promise.all(
+      LANGS.map(async (lang) => {
+        const posts = await getSortedPostsData(lang);
+        return paginate(posts, {
+          params: { lang },
+          pageSize: POST_PER_PAGE,
+        });
+      })
+    )
+  ).flat();
+}
+
+const { lang } = Astro.params;
+const { page } = Astro.props;
+---
+
+<PostsLayout lang={lang} posts={page.data} />

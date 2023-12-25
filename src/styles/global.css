@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --tokyo-1: 99% 0.004 277.15;
+    --tokyo-2: 91.35% 0.02 277.15;
+    --tokyo-3: 85% 0.030 276.76;
+    --tokyo-4: 76.66% 0.054 275.49;
+    --tokyo-45: 64.63% 0.068 275.56;
+    --tokyo-5: 58.9% 0.062 276.63;
+    --tokyo-6: 48.18% 0.056 273.91;
+    --tokyo-7: 32.94% 0.036 276.83;
+    --tokyo-8: 28.34% 0.020 276.91;
+
+    --background: var(--tokyo-1);
+    --foreground: var(--tokyo-7);
+    --foreground-200: var(--tokyo-6);
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: var(--tokyo-1);
+    --popover-foreground: var(--tokyo-7);
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: var(--tokyo-6);
+ 
+    --secondary: var(--tokyo-2); 
+    --secondary-foreground: var(--tokyo-7);
+ 
+    --muted: var(--tokyo-2);
+    --muted-foreground: var(--tokyo-5);
+ 
+    --accent: var(--tokyo-2);
+    --accent-foreground: var(--tokyo-7);
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: var(--tokyo-3);
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+  }
+  pre[data-theme*=' '],
+  code[data-theme*=' '] span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
+ 
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  /* .dark { */
+    --background: var(--tokyo-8);
+    --foreground: var(--tokyo-3);
+    --foreground-200: var(--tokyo-4);
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: var(--tokyo-8);
+    --popover-foreground: var(--tokyo-3);
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: var(--tokyo-4);
+ 
+    --secondary: var(--tokyo-7);
+    --secondary-foreground: var(--tokyo-3);
+ 
+    --muted: var(--tokyo-7);
+    --muted-foreground: var(--tokyo-5);
+ 
+    --accent: var(--tokyo-7);
+    --accent-foreground: var(--tokyo-3);
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: var(--tokyo-6);
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  } 
+  pre[data-theme*=' '],
+  code[data-theme*=' '] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+  code[data-theme*=' '] span[data-highlighted-line],
+  code[data-theme*=' '] span[data-highlighted-line] span {
+    background-color: oklch(var(--tokyo-6));
+  }
+}
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Somehow using class selector won't get this bundled, this is a workaround */
+  span[class="katex-display"] {
+    overflow-x: auto;
+  }
+  figure[data-rehype-pretty-code-figure] {
+    @apply my-0;
+  }
+  code {
+    counter-reset: line;
+  }
+  code[data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: hsl(var(--secondary-foreground))
+  }
+  html {
+    scroll-padding-top: 112px;
+  }
+}

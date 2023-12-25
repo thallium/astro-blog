@@ -1,0 +1,45 @@
+---
+import { type CollectionEntry } from "astro:content";
+interface Props {
+  post: CollectionEntry<"posts"> & {
+    tags: string[];
+  };
+  lang: string;
+}
+import { Hash } from "lucide-astro";
+const { post, lang } = Astro.props;
+const tags = post.tags;
+const slug = post.slug.split("/");
+const { title, date, summary, keywords, categories } = post.data;
+---
+
+<li class="mt-3 py-3 text-2xl">
+  <a
+    class="mb-4 font-medium"
+    href={`/${slug[0]}/post/${slug[1]}`}
+    data-astro-prefetch>{title}</a
+  >
+  <div class="text-base flex flex-row flex-wrap gap-x-1 mb-2 mt-1 items-center">
+    {
+      date && (
+        <time datetime={date.toISOString()} class="whitespace-nowrap">
+          {date.toISOString().split("T")[0]}
+        </time>
+      )
+    }
+    {
+      tags &&
+        tags.length > 0 &&
+        tags.map((tag) => (
+          <a
+            href={`/${lang}/tags/${tag}`}
+            class="flex flex-row whitespace-nowrap items-center no-underline text-muted-foreground"
+            data-astro-prefetch
+          >
+            <Hash size={18} />
+            {tag}
+          </a>
+        ))
+    }
+  </div>
+</li>

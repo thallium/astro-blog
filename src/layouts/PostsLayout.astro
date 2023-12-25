@@ -1,0 +1,15 @@
+---
+interface Props {
+  lang: string;
+  posts: Post[];
+}
+import { Post } from "src/lib/util";
+import RootLayout from "./RootLayout.astro";
+import Posts from "@components/Posts.astro";
+
+const { lang, posts } = Astro.props;
+---
+
+<RootLayout lang={lang}>
+  <Posts lang={lang} posts={posts} />
+</RootLayout>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  lang: string;
+}
+import { TITLE, languages } from "../site-config";
+// import LangSwitch from "@components/LangSwitch.astro";
+const { lang } = Astro.props;
+---
+
+<header
+  class="bg-background sticky top-0 z-50 border-solid border-b-[1px] border-b-border"
+>
+  <div
+    class="mx-auto max-w-3xl py-5 px-4 sm:px-8 xl:px-0 xl:max-w-3xl flex items-center justify-between"
+  >
+    <div class="flex items-center justify-between">
+      <a href={`/${lang}`} class="font-semibold block">
+        {TITLE}
+      </a>
+    </div>
+    <div class="flex items-center space-x-4 leading-5 sm:space-x-6">
+      {
+        languages[lang].navLinks
+          .filter((link) => link.href !== "/")
+          .map((link) => (
+            <a
+              href={`/${lang}${link.href}`}
+              class="hidden sm:block whitespace-nowrap font-medium"
+              data-astro-prefetch
+            >
+              {link.title}
+            </a>
+          ))
+      }
+      <!-- <LangSwitch client:load /> -->
+    </div>
+  </div>
+</header>

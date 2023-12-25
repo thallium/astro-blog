@@ -1,0 +1,23 @@
+---
+import PostsLayout from "src/layouts/PostsLayout.astro";
+import { asyncFlatMap } from "src/lib/util";
+import { LANGS, POST_PER_PAGE } from "src/site-config";
+import { getTags, getSortedPostsData } from "src/lib/posts";
+export async function getStaticPaths({ paginate }) {
+  return await asyncFlatMap(LANGS, async (lang) => {
+    const tags = await getTags(lang);
+    return await asyncFlatMap(tags, async (tag) => {
+      const posts = await getSortedPostsData(lang, tag[0]);
+      return paginate(posts, {
+        params: { lang, tag: tag[0] },
+        pageSize: POST_PER_PAGE,
+      });
+    });
+  });
+}
+
+const { lang } = Astro.params;
+const { page } = Astro.props;
+---
+
+<PostsLayout lang={lang} posts={page.data} />
