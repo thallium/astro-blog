@@ -1,8 +1,14 @@
 ---
+interface Props {
+  page: {
+    data: Post[];
+  };
+}
 import PostsLayout from "src/layouts/PostsLayout.astro";
 import { asyncFlatMap } from "src/lib/util";
 import { LANGS, POST_PER_PAGE } from "src/site-config";
 import { getTags, getSortedPostsData } from "src/lib/posts";
+import { type Post } from "src/lib/util";
 export async function getStaticPaths({ paginate }) {
   return await asyncFlatMap(LANGS, async (lang) => {
     const tags = await getTags(lang);

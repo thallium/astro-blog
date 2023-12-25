@@ -7,10 +7,11 @@ const { lang, tag } = Astro.params;
 export async function getStaticPaths() {
   return await asyncFlatMap(LANGS, async (lang) => {
     const tags = await getTags(lang);
-    console.log(tags);
-    const paths = tags.map((tag) => ({ params: { lang, tag: tag[0] } }));
+    const paths = tags.map((tag) => ({
+      params: { lang, tag: tag[0] },
+    }));
     return paths;
   });
 }
-return Astro.redirect(`/${lang}/tags/${tag}/page/1`);
+return Astro.redirect(`/${lang}/tags/${encodeURIComponent(tag)}/page/1`);
 ---

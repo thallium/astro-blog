@@ -19,7 +19,10 @@ const tags = await getTags(lang);
     {
       tags.map((tag) => (
         <li class="mb-4">
-          <a href={`/${lang}/tags/${tag[0]}`} class="flex-row items-center">
+          <a
+            href={`/${lang}/tags/${encodeURIComponent(tag[0])}`}
+            class="flex-row items-center"
+          >
             <Hash size={16} className="inline" />
             {tag[0]}
             <span class="rounded-lg bg-accent px-2 ml-1">{tag[1]}</span>

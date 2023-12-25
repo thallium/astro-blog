@@ -1,9 +1,9 @@
 ---
-import { type CollectionEntry } from "astro:content";
 import { getAllPosts } from "src/lib/posts";
 import RootLayout from "src/layouts/RootLayout.astro";
 import Collapsible from "@components/Collapsible.astro";
 import Figure from "@components/Figure.astro";
+import { Image } from "astro:assets";
 import { Hash } from "lucide-astro";
 import { type Post } from "src/lib/util";
 
@@ -55,7 +55,7 @@ const { title, date } = post.data;
     </div>
 
     <article class="prose prose-code:font-normal max-w-full">
-      <Content class="" components={{ Collapsible, Figure }} />
+      <Content class="" components={{ Collapsible, Figure, Image }} />
     </article>
   </main>
 </RootLayout>
