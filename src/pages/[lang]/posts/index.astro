@@ -9,5 +9,8 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-return Astro.redirect(`/${lang}/posts/page/1`);
 ---
+
+<head>
+  <meta http-equiv="refresh" content={`0; URL=/${lang}/posts/page/1`} />
+</head>
