@@ -13,5 +13,12 @@ export async function getStaticPaths() {
     return paths;
   });
 }
-return Astro.redirect(`/${lang}/tags/${encodeURIComponent(tag)}/page/1`);
+// return Astro.redirect(`/${lang}/tags/${encodeURIComponent(tag)}/page/1`);
 ---
+
+<head>
+  <meta
+    http-equiv="refresh"
+    content={`0; URL=/${lang}/tags/${encodeURIComponent(tag)}/page/1`}
+  />
+</head>
