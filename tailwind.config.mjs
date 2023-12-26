@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const { nextui } = require("@nextui-org/react");
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 
 export default {
 	darkMode: ["class"],
@@ -76,6 +78,10 @@ export default {
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
+			},
+			fontFamily: {
+				sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
+				mono: ["Fira Code Variable", ...defaultTheme.fontFamily.mono],
 			},
 			typography: {
 				DEFAULT: {
