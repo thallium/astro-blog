@@ -26,6 +26,11 @@ const post = defineCollection({
 	}),
 });
 
+
+const homePage = defineCollection({
+	type: 'content',
+})
 export const collections = { 
-	'posts': post
+	'posts': post,
+	'home-page': homePage,
 };

@@ -1,15 +1,24 @@
 ---
 interface Props {
   lang: string;
+  currentPage: number;
+  totalPages: number;
+  basePath: string;
   posts: Post[];
 }
 import { Post } from "src/lib/util";
 import RootLayout from "./RootLayout.astro";
 import Posts from "@components/Posts.astro";
+import Pagination from "@components/Pagination.astro";
 
-const { lang, posts } = Astro.props;
+const { lang, posts, currentPage, totalPages, basePath } = Astro.props;
 ---
 
 <RootLayout lang={lang}>
   <Posts lang={lang} posts={posts} />
+  <Pagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    basePath={basePath}
+  />
 </RootLayout>

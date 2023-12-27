@@ -18,8 +18,10 @@ const url = Astro.url.pathname.split("/");
   >
     {
       LANGS.map((lang) => (
-        <li class="py-2 px-2 rounded-md hover:bg-accent">
-          <a href={url.with(1, lang).join("/")}>{languages[lang].name}</a>
+        <li class="rounded-md hover:bg-accent flex">
+          <a class="py-2 px-2 w-full" href={url.with(1, lang).join("/")}>
+            {languages[lang].name}
+          </a>
         </li>
       ))
     }

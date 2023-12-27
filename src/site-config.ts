@@ -6,7 +6,7 @@ export const DESCRIPTION = "The place where I post something about myself.";
 export const AUTHOR = "Thallium54";
 export const POST_PER_PAGE = 7;
 export const LANGS = ['en', 'zh'];
-export const FOOTER = "© 2023 Powered by Astro.js | Theme inspired by Tokyo Night"
+export const FOOTER = "© 2023 Powered by Astro | Theme inspired by Tokyo Night"
 
 export const siteMetadata = {
     title: "Thallium54",

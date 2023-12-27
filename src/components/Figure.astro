@@ -9,7 +9,7 @@ interface Props {
 }
 import { Image } from "astro:assets";
 
-const { src, alt, width, height, caption } = Astro.props;
+const { src, alt, width, height, caption, ...attrs } = Astro.props;
 ---
 
 <figure>
@@ -19,6 +19,7 @@ const { src, alt, width, height, caption } = Astro.props;
     alt={alt || ""}
     width={width}
     height={height}
+    {...attrs}
   />
   {caption && <figcaption class="text-center">{caption}</figcaption>}
 </figure>

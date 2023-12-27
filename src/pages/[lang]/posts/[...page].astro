@@ -1,8 +1,13 @@
 ---
+type Props = {
+  page: Page<Post>;
+};
 import PostsLayout from "src/layouts/PostsLayout.astro";
 import { LANGS, POST_PER_PAGE } from "src/site-config";
 import { getSortedPostsData } from "src/lib/posts";
 import myPaginate from "src/lib/paginate";
+import { type Post } from "src/lib/util";
+import { Page } from "src/types";
 export async function getStaticPaths({ paginate }) {
   return (
     await Promise.all(
@@ -25,4 +30,10 @@ const { lang } = Astro.params;
 const { page } = Astro.props;
 ---
 
-<PostsLayout lang={lang} posts={page.data} />
+<PostsLayout
+  lang={lang}
+  posts={page.data}
+  basePath={`/${lang}/posts`}
+  currentPage={page.currentPage}
+  totalPages={page.lastPage}
+/>

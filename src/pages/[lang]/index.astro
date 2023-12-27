@@ -1,12 +1,35 @@
 ---
-import RootLayout from "src/layouts/RootLayout.astro";
-import { LANGS } from "src/site-config";
-const { lang } = Astro.params;
+interface Props {
+  lang: string;
+}
 export function getStaticPaths() {
   return LANGS.flatMap((lang) => [{ params: { lang } }]);
 }
+
+import RootLayout from "src/layouts/RootLayout.astro";
+import { LANGS } from "src/site-config";
+import Posts from "@components/Posts.astro";
+import Collapsible from "@components/Collapsible.astro";
+import Figure from "@components/Figure.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import { translate } from "src/lib/util";
+import { getSortedPostsData } from "src/lib/posts";
+
+const { lang } = Astro.params;
+const content = await getEntry("home-page", lang);
+const { Content } = await content.render();
+const recentPosts = (await getSortedPostsData(lang)).slice(0, 5);
 ---
 
 <RootLayout lang={lang}>
-  <h1>Hello, world! {lang}</h1>
+  <main class="max-w-3xl py-3 xl:py-6">
+    <article class="prose prose-code:font-normal">
+      <Content components={{ Collapsible, Figure, Image }} />
+    </article>
+    <h1 class="group text-3xl font-bold mt-8">
+      {translate(lang, "recentPosts")}
+    </h1>
+    <Posts lang={lang} posts={recentPosts} />
+  </main>
 </RootLayout>
