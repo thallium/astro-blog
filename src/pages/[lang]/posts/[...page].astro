@@ -2,15 +2,20 @@
 import PostsLayout from "src/layouts/PostsLayout.astro";
 import { LANGS, POST_PER_PAGE } from "src/site-config";
 import { getSortedPostsData } from "src/lib/posts";
+import myPaginate from "src/lib/paginate";
 export async function getStaticPaths({ paginate }) {
   return (
     await Promise.all(
       LANGS.map(async (lang) => {
         const posts = await getSortedPostsData(lang);
-        return paginate(posts, {
-          params: { lang },
-          pageSize: POST_PER_PAGE,
-        });
+        return myPaginate(
+          posts,
+          {
+            params: { lang },
+            pageSize: POST_PER_PAGE,
+          },
+          paginate
+        );
       })
     )
   ).flat();
