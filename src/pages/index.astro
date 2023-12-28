@@ -1,0 +1,16 @@
+---
+// var language = window.navigator.language || window.navigator.userLanguage;
+
+// console.log(language);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      let language = window.navigator.language;
+      let lang = language?.startsWith("zh") ? "zh" : "en";
+      window.location.replace("/" + lang);
+    </script>
+  </head>
+</html>
