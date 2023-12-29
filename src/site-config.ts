@@ -54,7 +54,3 @@ export const languages: LanguageConfig = {
         ]
     },
 }
-
-export function foo() {
-    return "bar"
-}

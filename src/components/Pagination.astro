@@ -42,6 +42,7 @@ if (currentPage + 2 <= totalPages - 4) {
         <MoreHorizontal size={18} class="flex items-center justify-center" />
       ) : (
         <a
+          data-astro-prefetch
           href={basePath + (i > 1 ? `/page/${i}` : "")}
           class:list={[
             "h-8 w-8 flex items-center justify-center hover:border rounded border-foreground",

@@ -17,7 +17,9 @@ import TokyoNightLight from './src/TokyoNightLight.json'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astro-blog-weld-ten.vercel.app',
-  prefetch: true,
+  prefetch: {
+    defaultStrategy: 'viewport'
+  },
   image: {
     domains: ["astro.build", "codeforces.com", "user-images.githubusercontent.com", "cdn.sparkfun.com"],
   },

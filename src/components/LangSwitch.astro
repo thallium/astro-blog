@@ -10,16 +10,17 @@ const url = Astro.url.pathname.split("/");
     type="button"
     data-bs-toggle="dropdown"
     aria-expanded="false"
+    data-bs-offset="0,10"
   >
     <Languages class="h-6 w-6" />
   </button>
   <ul
-    class="dropdown-menu dropdown-menu-end bg-background mt-2 rounded-md border-border border-[1px] p-1"
+    class="dropdown-menu dropdown-menu-end rounded-md border-[1px] border-border bg-background p-1"
   >
     {
       LANGS.map((lang) => (
-        <li class="rounded-md hover:bg-accent flex">
-          <a class="py-2 px-2 w-full" href={url.with(1, lang).join("/")}>
+        <li class="flex rounded-md hover:bg-accent">
+          <a class="w-full p-2" href={url.with(1, lang).join("/")}>
             {languages[lang].name}
           </a>
         </li>

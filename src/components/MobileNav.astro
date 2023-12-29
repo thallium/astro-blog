@@ -1,0 +1,39 @@
+---
+interface Props {
+  lang: string;
+}
+import { Menu } from "lucide-astro";
+import { TITLE, languages } from "../site-config";
+const { lang } = Astro.props;
+---
+
+<div class="dropdown h-6">
+  <button
+    class="dropdown-toggle sm:hidden"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    data-bs-offset="0,10"
+  >
+    <Menu class="h-6 w-6" />
+  </button>
+  <ul
+    class="dropdown-menu dropdown-menu-end mt-2 rounded-md border-[1px] border-border bg-background p-1"
+  >
+    {
+      languages[lang].navLinks
+        .filter((link) => link.href !== "/")
+        .map((link) => (
+          <li class="flex rounded-md hover:bg-accent">
+            <a
+              href={`/${lang}${link.href}`}
+              class="w-full p-2"
+              data-astro-prefetch
+            >
+              {link.title}
+            </a>
+          </li>
+        ))
+    }
+  </ul>
+</div>

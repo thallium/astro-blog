@@ -4,19 +4,18 @@ interface Props {
 }
 import { TITLE, languages } from "../site-config";
 import LangSwitch from "@components/LangSwitch.astro";
+import MobileNav from "./MobileNav.astro";
 const { lang } = Astro.props;
 ---
 
 <header
-  class="bg-background sticky top-0 z-50 border-solid border-b-[1px] border-b-border"
+  class="sticky top-0 z-50 border-b-[1px] border-solid border-b-border bg-background"
 >
   <div
-    class="mx-auto max-w-3xl py-5 px-4 sm:px-8 xl:px-0 xl:max-w-3xl flex items-center justify-between"
+    class="mx-auto flex max-w-3xl items-center justify-between px-4 py-5 sm:px-8 xl:max-w-3xl xl:px-0"
   >
     <div class="flex items-center justify-between">
-      <a href={`/${lang}`} class="font-semibold block">
-        {TITLE}
-      </a>
+      <a href={`/${lang}`} class="block font-semibold">{TITLE}</a>
     </div>
     <div class="flex items-center space-x-4 leading-5 sm:space-x-6">
       {
@@ -25,7 +24,7 @@ const { lang } = Astro.props;
           .map((link) => (
             <a
               href={`/${lang}${link.href}`}
-              class="hidden sm:block whitespace-nowrap font-medium"
+              class="hidden whitespace-nowrap font-medium sm:block"
               data-astro-prefetch
             >
               {link.title}
@@ -33,6 +32,7 @@ const { lang } = Astro.props;
           ))
       }
       <LangSwitch />
+      <MobileNav lang={lang} />
     </div>
   </div>
 </header>
