@@ -1,6 +1,9 @@
 ---
 interface Props {
   lang: string;
+  title?: string;
+  keywords?: string[];
+  description?: string;
 }
 import BaseHead from "@components/BaseHead.astro";
 import Navbar from "@components/Navbar.astro";
@@ -8,18 +11,23 @@ import Footer from "@components/Footer.astro";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/fira-code";
 import { TITLE, DESCRIPTION } from "../site-config";
-const { lang } = Astro.props;
+const {
+  lang,
+  title = TITLE,
+  description = DESCRIPTION,
+  keywords,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <BaseHead title={TITLE} description={DESCRIPTION} />
+    <BaseHead title={title} description={description} keywords={keywords} />
   </head>
   <body>
     <Navbar lang={lang} />
     <div
-      class="min-h-screen max-w-3xl mx-auto px-4 sm:px-8 xl:px-0 mt-8 sm:mt-12"
+      class="mx-auto mt-8 min-h-screen max-w-3xl px-4 sm:mt-12 sm:px-8 xl:px-0"
     >
       <slot />
     </div>
