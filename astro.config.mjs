@@ -18,10 +18,10 @@ export default defineConfig({
   site: 'https://tgc54.com',
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'hover'
+    defaultStrategy: 'viewport'
   },
   image: {
-    domains: ["astro.build", "codeforces.com", "user-images.githubusercontent.com", "cdn.sparkfun.com"]
+    domains: ["astro.build", "user-images.githubusercontent.com", "cdn.sparkfun.com"]
   },
   markdown: {
     syntaxHighlight: false,

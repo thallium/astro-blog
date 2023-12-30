@@ -4,7 +4,7 @@
 export const TITLE = "Thallium54";
 export const DESCRIPTION = "The place where I post something about myself.";
 export const AUTHOR = "Thallium54";
-export const POST_PER_PAGE = 7;
+export const POST_PER_PAGE = 10;
 export const LANGS = ['en', 'zh'];
 export const FOOTER = "© 2023 Powered by Astro | Theme inspired by Tokyo Night"
 
