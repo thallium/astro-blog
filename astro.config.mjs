@@ -17,7 +17,8 @@ import TokyoNightLight from './src/TokyoNightLight.json';
 export default defineConfig({
   site: 'https://tgc54.com',
   prefetch: {
-    defaultStrategy: 'viewport'
+    prefetchAll: true,
+    defaultStrategy: 'hover'
   },
   image: {
     domains: ["astro.build", "codeforces.com", "user-images.githubusercontent.com", "cdn.sparkfun.com"]
