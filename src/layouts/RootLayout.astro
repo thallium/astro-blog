@@ -6,11 +6,12 @@ interface Props {
   description?: string;
 }
 import BaseHead from "@components/BaseHead.astro";
-import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
-import "@fontsource-variable/inter";
+import Navbar from "@components/Navbar.astro";
 import "@fontsource-variable/fira-code";
-import { TITLE, DESCRIPTION } from "../site-config";
+import "@fontsource-variable/inter";
+import { Spa } from "astro-spa";
+import { DESCRIPTION, TITLE } from "../site-config";
 const {
   lang,
   title = TITLE,
@@ -32,6 +33,7 @@ const {
       <slot />
     </div>
     <Footer />
+    <Spa progressBar={false} defaultAnimation={false} />
     <script src="/src/lib/bootstrap.js"></script>
   </body>
 </html>

@@ -16,10 +16,10 @@ import TokyoNightLight from './src/TokyoNightLight.json';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://tgc54.com',
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport'
-  },
+  // prefetch: {
+  //   prefetchAll: true,
+  //   defaultStrategy: 'viewport'
+  // },
   image: {
     domains: ["astro.build", "user-images.githubusercontent.com", "cdn.sparkfun.com"]
   },
