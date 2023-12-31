@@ -12,7 +12,7 @@ const id = "c" + randomBytes(6).toString("hex");
 <button
   type="button"
   aria-controls={id}
-  class="group collapsible flex items-center bg-accent rounded-lg justify-between w-full p-4"
+  class="collapsible group flex w-full items-center justify-between rounded-lg bg-accent p-4"
   data-bs-toggle="collapse"
   data-bs-target={"#" + id}
 >
@@ -20,13 +20,18 @@ const id = "c" + randomBytes(6).toString("hex");
     {title}
   </h4>
   <ChevronUp
-    class="group-[[aria-expanded='true']]:rotate-180 trnasition-transform"
+    class="trnasition-transform group-[[aria-expanded='true']]:rotate-180"
   />
 </button>
 <div
   id={id}
   aria-expanded="false"
-  class:list={["collapse", { show: !isCollapsed }]}
+  class:list={[
+    "collapse overflow-hidden transition-[height] duration-300 ease-in-out",
+    { show: !isCollapsed },
+  ]}
 >
-  <slot />
+  <div class="measuringWrapper">
+    <slot />
+  </div>
 </div>
