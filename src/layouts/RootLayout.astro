@@ -10,7 +10,6 @@ import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
 import "@fontsource-variable/fira-code";
 import "@fontsource-variable/inter";
-import { Spa } from "astro-spa";
 import { DESCRIPTION, TITLE } from "../site-config";
 const {
   lang,
@@ -33,7 +32,7 @@ const {
       <slot />
     </div>
     <Footer />
-    <Spa progressBar={false} defaultAnimation={false} />
+    <!-- <Spa progressBar={false} defaultAnimation={false} /> -->
     <script src="/src/lib/component-control.js"></script>
   </body>
 </html>
