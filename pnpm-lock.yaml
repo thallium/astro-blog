@@ -95,6 +95,9 @@ dependencies:
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
+  yaml:
+    specifier: ^2.3.4
+    version: 2.3.4
 
 devDependencies:
   '@tailwindcss/typography':
