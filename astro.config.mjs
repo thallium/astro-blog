@@ -46,7 +46,7 @@ export default defineConfig({
       properties: {
         ariaHidden: true,
         tabIndex: -1,
-        className: "opacity-0 no-underline text-muted-foreground group-hover:opacity-100"
+        className: "opacity-0 no-underline text-muted-foreground group-hover:opacity-100 transition-opacity"
       }
     }]]
   },
