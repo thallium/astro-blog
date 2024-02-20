@@ -5,6 +5,7 @@ interface Props {
 import LangSwitch from "@components/LangSwitch.astro";
 import { TITLE, languages } from "../site-config";
 import MobileNav from "./MobileNav.astro";
+import Search from "./Search";
 const { lang } = Astro.props;
 ---
 
@@ -32,6 +33,7 @@ const { lang } = Astro.props;
           ))
       }
       <LangSwitch />
+      <Search lang={lang} client:load />
       <MobileNav lang={lang} />
     </div>
   </div>

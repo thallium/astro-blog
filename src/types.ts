@@ -23,3 +23,9 @@ export interface Page<T = any> {
     next: string | undefined;
   };
 }
+
+export type SearchIndexItem = {
+  title: string;
+  content: string;
+  url: string;
+};

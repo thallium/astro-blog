@@ -2,16 +2,16 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
-
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-
 import TokyoNight from './src/TokyoNight.json';
 import TokyoNightLight from './src/TokyoNightLight.json';
+
+import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
@@ -50,7 +50,11 @@ export default defineConfig({
       }
     }]]
   },
-  integrations: [mdx(), sitemap(), tailwind({
-    applyBaseStyles: false
-  })]
+  integrations: [
+    mdx(), sitemap(),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    preact(),
+  ]
 });
