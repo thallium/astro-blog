@@ -1,10 +1,15 @@
-import YAML from 'yaml'
 import { writeFileSync } from 'fs'
+import YAML from 'yaml'
 
-if (process.argv.length < 3) {
-    console.error("Path of the post is required")
+const postsPath = "src/content/posts"
+
+if (process.argv.length < 4) {
+    console.error("Usage: node create-post.mjs <lang> <file-name>")
     process.exit(1)
 }
+
+const lang = process.argv[2]
+const fileName = process.argv[3]
 
 const frontmatter = {
     title: '',
@@ -16,6 +21,6 @@ const frontmatter = {
 
 const res = "---\n" + YAML.stringify(frontmatter) + "---\n"
 
-writeFileSync(process.argv[2], res)
+writeFileSync(`${postsPath}/${lang}/${fileName}`, res)
 
-console.log(`Created ${process.argv[2]}`)
+console.log(`Created ${postsPath}/${lang}/${fileName}`)
